@@ -1,1 +1,8 @@
-<p>product-list works!</p>
+
+<h2> Products data loading....</h2>
+<div class="container">
+  <p *ngFor="let temp of products">
+    Name : {{temp.name}}
+    Details: {{temp.description}}
+  </p>
+</div>
