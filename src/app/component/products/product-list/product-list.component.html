@@ -1,8 +1,26 @@
-
 <h2> Products data loading....</h2>
 <div class="container">
-  <p *ngFor="let temp of products">
-    Name : {{temp.name}}
-    Details: {{temp.description}}
-  </p>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>NAME</th>
+      <th>SKU</th>
+      <th>Des</th>
+      <th>Active</th>
+      <th>Stock</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let friend of productResponse; index as i">
+      <td><span>{{i+1}}</span></td>
+      <td><span>{{friend.name}}</span></td>
+      <td><span>{{friend.sku}}</span></td>
+      <td><span>{{friend.description}}</span></td>
+      <td><span>{{friend.active}}</span></td>
+      <td><span>{{friend.unitInStock}}</span></td>
+    </tr>
+    </tbody>
+  </table>
 </div>
+
