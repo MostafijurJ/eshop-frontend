@@ -1,0 +1,19 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div class="row">
+<!--        loop over product table-->
+        <div *ngFor="let productItem of productResponse; index as i" class="col-md-3 text-center">
+          <div class="product-box">
+            <img src="{{productItem.imageUrl}}" class="img-responsive">
+            <h1>{{productItem.name}}</h1>
+            <div class="price"> {{productItem.unitPrice | currency: 'USD'}}</div>
+            <a href="#" class="primary-btn"> Add to Cart</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
