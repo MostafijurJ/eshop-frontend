@@ -10,9 +10,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {ProductService} from './services/product.service';
 import {RouterModule, Routes} from '@angular/router';
 import { ProductCategoryComponent } from './component/product-category/product-category.component';
+import { SearchComponent } from './component/search/search.component';
 
 //TODO define routes
 const routes: Routes = [
+
+  {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
@@ -26,7 +29,8 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     ProductListComponent,
-    ProductCategoryComponent
+    ProductCategoryComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

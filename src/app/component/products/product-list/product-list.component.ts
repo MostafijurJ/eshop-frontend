@@ -11,8 +11,8 @@ import {ActivatedRoute} from '@angular/router';
 export class ProductListComponent implements OnInit {
 
   public productResponse: IProduct[] = [];
-
-  categoryId : string | undefined| null;
+  categoryId: string | undefined | null;
+  searchMode: boolean = false;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
   }
@@ -25,10 +25,28 @@ export class ProductListComponent implements OnInit {
 
 
   getData() {
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
+    if (this.searchMode) {
+      this.handleSearchProducts();
+    } else {
+      this.handleListOfProducts();
+    }
+  }
+
+  private handleSearchProducts() {
+    const keyWord: string | null = this.route.snapshot.paramMap.get('keyword');
+    this.productService.searchProducts(keyWord).subscribe(
+      data => {
+        this.productResponse = data;
+      }
+    );
+  }
+
+  handleListOfProducts() {
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
     if (hasCategoryId) {
       this.categoryId = this.route.snapshot.paramMap.get('id');
-       //this.categoryId = 'ec867ce0-a726-11eb-bbd2-74d83e98005d';
+      //this.categoryId = 'ec867ce0-a726-11eb-bbd2-74d83e98005d';
     } else {
       this.categoryId = 'cc92b736-a726-11eb-bbd2-74d83e98005d';
     }
@@ -39,4 +57,5 @@ export class ProductListComponent implements OnInit {
       }
     );
   }
+
 }
