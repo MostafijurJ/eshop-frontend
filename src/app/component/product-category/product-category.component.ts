@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductCategoryService} from '../../services/product-category.service';
 import {ProductCategory} from '../../classes/product-category';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-product-category',
@@ -11,7 +12,7 @@ export class ProductCategoryComponent implements OnInit {
 
   public productCategories: ProductCategory[] = [];
 
-  constructor(private productCategoryService: ProductCategoryService) {}
+  constructor(private productCategoryService: ProductCategoryService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getProductCategories();
