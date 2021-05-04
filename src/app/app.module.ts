@@ -9,6 +9,7 @@ import {ProductListComponent} from './component/products/product-list/product-li
 import {HttpClientModule} from '@angular/common/http';
 import {ProductService} from './services/product.service';
 import {RouterModule, Routes} from '@angular/router';
+import { ProductCategoryComponent } from './component/product-category/product-category.component';
 
 //TODO define routes
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductCategoryComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
