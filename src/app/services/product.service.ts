@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IProduct} from '../interface/IProduct';
+import {Products} from '../classes/products/products';
 
 @Injectable()
 export class ProductService {
@@ -11,7 +12,7 @@ export class ProductService {
   }
 
   getProductsData(categoryId: string | null): Observable<IProduct[]> {
-    const searchUrl = this.baseUrl + '/' + categoryId;
+    const searchUrl = `${this.baseUrl}/category?categoryId=${categoryId}`;
     return this.httpClient.get<IProduct[]>(searchUrl);
   }
 
@@ -19,4 +20,10 @@ export class ProductService {
     const searchUrl = `${this.baseUrl}/search?name=${keyWord}`;
     return this.httpClient.get<IProduct[]>(searchUrl);
   }
+
+  getProductDetailsById(productId: string | null): Observable<Products>{
+    const productDetailsUrl = `${this.baseUrl}/${productId}`;
+    return this.httpClient.get<Products>(productDetailsUrl);
+  }
+
 }

@@ -9,4 +9,6 @@ export class Products {
   active !: boolean;
   dateCreated !: Date;
   lastUpdated !: Date;
+   constructor() {
+   }
 }
