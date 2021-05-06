@@ -11,9 +11,17 @@ export class ProductService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getProductsData(categoryId: string | null): Observable<IProduct[]> {
+  getProductsByCategory(categoryId: string | null): Observable<IProduct[]> {
     const searchUrl = `${this.baseUrl}/category?categoryId=${categoryId}`;
     return this.httpClient.get<IProduct[]>(searchUrl);
+  }
+
+  //TODO for getting products list with pagination
+  getProductsByCategoryPaginate(thePage: number, pageSize: number,
+                                categoryId: string | null): Observable<IProduct> {
+    const searchUrl = `${this.baseUrl}/category?categoryId=${categoryId}`
+      + `&page=${thePage}&size=${pageSize}`;
+    return this.httpClient.get<IProduct>(searchUrl);
   }
 
   searchProducts(keyWord: string | null): Observable<IProduct[]> {
@@ -21,7 +29,7 @@ export class ProductService {
     return this.httpClient.get<IProduct[]>(searchUrl);
   }
 
-  getProductDetailsById(productId: string | null): Observable<Products>{
+  getProductDetailsById(productId: string | null): Observable<Products> {
     const productDetailsUrl = `${this.baseUrl}/${productId}`;
     return this.httpClient.get<Products>(productDetailsUrl);
   }

@@ -1,6 +1,5 @@
-import {NgModule} from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './component/common/header/header.component';
@@ -9,9 +8,10 @@ import {ProductListComponent} from './component/products/product-list/product-li
 import {HttpClientModule} from '@angular/common/http';
 import {ProductService} from './services/product.service';
 import {RouterModule, Routes} from '@angular/router';
-import { ProductCategoryComponent } from './component/product-category/product-category.component';
-import { SearchComponent } from './component/search/search.component';
-import { ProductDetailsComponent } from './component/product-details/product-details.component';
+import {ProductCategoryComponent} from './component/product-category/product-category.component';
+import {SearchComponent} from './component/search/search.component';
+import {ProductDetailsComponent} from './component/product-details/product-details.component';
+import {NgModule} from '@angular/core';
 
 //TODO define routes
 const routes: Routes = [
@@ -39,7 +39,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
