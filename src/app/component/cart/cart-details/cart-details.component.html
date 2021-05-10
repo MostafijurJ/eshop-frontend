@@ -2,20 +2,27 @@
   <div class="section-content section-content-p30">
     <div class="container-fluid">
       <table class="table table-bordered">
-        <tr *ngFor="let item of cartItem">
-          <td>
-            <img src="{{item.imgUri}}"  width="150px">
-          </td>
-          <td>
-            <p>{{item.name}}</p>
-            <p>{{item.unitPrice}}</p>
-          </td>
-          <td>
-            {{item.quantity}}
-          </td>
 
+        <tr class="font-weight-bold">
+          <td width="20%">Product Image</td>
+          <td width="50%">Name</td>
+          <td width="30%">Quantity</td>
         </tr>
 
+        <tr *ngFor="let item of cartItem">
+          <td>
+            <img src="{{item.imgUri}}" width="150px" alt="image is loading..">
+          </td>
+          <td>
+            <p class="font-weight-bold">{{item.name}}</p>
+            <p>{{item.unitPrice | currency: 'USD'}}</p>
+          </td>
+          <td>
+            <div class="items">
+              <label></label>  {{item.quantity}}
+            </div>
+          </td>
+        </tr>
 
       </table>
 
