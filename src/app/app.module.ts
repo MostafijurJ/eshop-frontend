@@ -13,11 +13,13 @@ import {SearchComponent} from './component/search/search.component';
 import {ProductDetailsComponent} from './component/product-details/product-details.component';
 import {NgModule} from '@angular/core';
 import { CartStatusComponent } from './component/cart/cart-status/cart-status.component';
+import { CartDetailsComponent } from './component/cart/cart-details/cart-details.component';
 
 //TODO define routes
 const routes: Routes = [
 
   {path: 'product/:id', component: ProductDetailsComponent},
+  {path: 'cart-details', component: CartDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
@@ -35,7 +37,8 @@ const routes: Routes = [
     ProductCategoryComponent,
     SearchComponent,
     ProductDetailsComponent,
-    CartStatusComponent
+    CartStatusComponent,
+    CartDetailsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
