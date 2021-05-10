@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
-import {IProduct} from '../../../interface/IProduct';
 import {ActivatedRoute} from '@angular/router';
 import {CartItemService} from '../../../services/cart/cart-item.service';
 import {CartItem} from '../../../classes/cart/cart-item';
+import {Products} from '../../../classes/products/products';
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +12,7 @@ import {CartItem} from '../../../classes/cart/cart-item';
 })
 export class ProductListComponent implements OnInit {
 
-  public productResponse: IProduct[] = [];
+  public productResponse: Products[] = [];
 
   currentCategoryId: string | undefined | null;
   previousCategoryId: string | undefined | null;
@@ -78,17 +78,8 @@ export class ProductListComponent implements OnInit {
 
   }
 
-  /*  processResult(){
-      return (data: IProduct) =>{
-        this._productResponseSingle = data;
-        this.page = data.page+1;
-        this.pageSize = data.pageSize;
-        this.totalNumberOfElement =data.totalNumberOfElement;
 
-      }
-    }*/
-
-  addToCart(productItem: IProduct) {
+  addToCart(productItem: Products) {
     console.log(`name =  ${productItem.name} `);
     const cartItem = new CartItem(productItem);
     this.cartItemService.addToCart(cartItem);

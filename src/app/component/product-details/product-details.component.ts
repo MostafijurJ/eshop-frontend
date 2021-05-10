@@ -3,6 +3,7 @@ import {ProductService} from '../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {Products} from '../../classes/products/products';
 import {CartItemService} from '../../services/cart/cart-item.service';
+import {CartItem} from '../../classes/cart/cart-item';
 
 @Component({
   selector: 'app-product-details',
@@ -30,7 +31,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart() {
-    //const cartItem = new CartItem();
-    console.log(`added to carted`);
+    const  cartItem = new CartItem(this.products);
+    this.cartItemService.addToCart(cartItem);
   }
 }

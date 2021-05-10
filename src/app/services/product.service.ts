@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {IProduct} from '../interface/IProduct';
 import {Products} from '../classes/products/products';
 
 @Injectable()
@@ -11,27 +10,27 @@ export class ProductService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getProductsByCategory(categoryId: string | null): Observable<IProduct[]> {
+  getProductsByCategory(categoryId: string | null): Observable<Products[]> {
     const searchUrl = `${this.baseUrl}/category?categoryId=${categoryId}`;
-    return this.httpClient.get<IProduct[]>(searchUrl);
+    return this.httpClient.get<Products[]>(searchUrl);
   }
 
   //TODO for getting products list with pagination
   getProductsByCategoryPaginate(thePage: number, pageSize: number,
-                                categoryId: string | null): Observable<IProduct> {
+                                categoryId: string | null): Observable<Products> {
     const searchUrl = `${this.baseUrl}/category?categoryId=${categoryId}`
       + `&page=${thePage}&size=${pageSize}`;
-    return this.httpClient.get<IProduct>(searchUrl);
+    return this.httpClient.get<Products>(searchUrl);
   }
 
-  searchProducts(keyWord: string | null): Observable<IProduct[]> {
+  searchProducts(keyWord: string | null): Observable<Products[]> {
     const searchUrl = `${this.baseUrl}/search?name=${keyWord}`;
-    return this.httpClient.get<IProduct[]>(searchUrl);
+    return this.httpClient.get<Products[]>(searchUrl);
   }
 
-  getProductDetailsById(productId: string | null): Observable<IProduct> {
+  getProductDetailsById(productId: string | null): Observable<Products> {
     const productDetailsUrl = `${this.baseUrl}/${productId}`;
-    return this.httpClient.get<IProduct>(productDetailsUrl);
+    return this.httpClient.get<Products>(productDetailsUrl);
   }
 
 }
