@@ -29,9 +29,9 @@ export class ProductService {
     return this.httpClient.get<IProduct[]>(searchUrl);
   }
 
-  getProductDetailsById(productId: string | null): Observable<Products> {
+  getProductDetailsById(productId: string | null): Observable<IProduct> {
     const productDetailsUrl = `${this.baseUrl}/${productId}`;
-    return this.httpClient.get<Products>(productDetailsUrl);
+    return this.httpClient.get<IProduct>(productDetailsUrl);
   }
 
 }

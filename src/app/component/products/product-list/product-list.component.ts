@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {IProduct} from '../../../interface/IProduct';
 import {ActivatedRoute} from '@angular/router';
+import {CartItemService} from '../../../services/cart/cart-item.service';
+import {CartItem} from '../../../classes/cart/cart-item';
 
 @Component({
   selector: 'app-product-list',
@@ -16,11 +18,11 @@ export class ProductListComponent implements OnInit {
   previousCategoryId: string | undefined | null;
   searchMode: boolean = false;
 
- public page: number = 1;
+  public page: number = 1;
   public pageSize: number = 10;
   public totalNumberOfElement: number = 25;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private cartItemService: CartItemService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -63,27 +65,33 @@ export class ProductListComponent implements OnInit {
     this.previousCategoryId = this.currentCategoryId;
     console.log(`current cat id = ${this.previousCategoryId}`);
 
-   /* return this.productService.getProductsByCategoryPaginate(this.page - 1,
-                                                                      this.pageSize,
-                                                                      this.currentCategoryId)
-                                                                      .subscribe(
-                                                                        this.processResult());*/
+    /* return this.productService.getProductsByCategoryPaginate(this.page - 1,
+                                                                       this.pageSize,
+                                                                       this.currentCategoryId)
+                                                                       .subscribe(
+                                                                         this.processResult());*/
     return this.productService.getProductsByCategory(this.currentCategoryId).subscribe(
-    res =>{
-      this.productResponse = res;
-    }
-      )
+      res => {
+        this.productResponse = res;
+      }
+    );
 
   }
 
-/*  processResult(){
-    return (data: IProduct) =>{
-      this._productResponseSingle = data;
-      this.page = data.page+1;
-      this.pageSize = data.pageSize;
-      this.totalNumberOfElement =data.totalNumberOfElement;
+  /*  processResult(){
+      return (data: IProduct) =>{
+        this._productResponseSingle = data;
+        this.page = data.page+1;
+        this.pageSize = data.pageSize;
+        this.totalNumberOfElement =data.totalNumberOfElement;
 
-    }
-  }*/
+      }
+    }*/
 
+  addToCart(productItem: IProduct) {
+    console.log(`name =  ${productItem.name} `);
+    const cartItem = new CartItem(productItem);
+    this.cartItemService.addToCart(cartItem);
+
+  }
 }

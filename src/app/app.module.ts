@@ -12,6 +12,7 @@ import {ProductCategoryComponent} from './component/product-category/product-cat
 import {SearchComponent} from './component/search/search.component';
 import {ProductDetailsComponent} from './component/product-details/product-details.component';
 import {NgModule} from '@angular/core';
+import { CartStatusComponent } from './component/cart/cart-status/cart-status.component';
 
 //TODO define routes
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
     ProductListComponent,
     ProductCategoryComponent,
     SearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -15,7 +15,7 @@
             </a>
 
             <div class="price"> {{productItem.unitPrice | currency: 'USD'}}</div>
-            <a href="#" class="primary-btn"> Add to Cart</a>
+            <button (click)="addToCart(productItem)" class="btn btn-primary btn-sm"> Add to Cart</button>
           </div>
         </div>
 
