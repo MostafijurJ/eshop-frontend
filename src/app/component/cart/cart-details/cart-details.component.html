@@ -1,4 +1,25 @@
 <div class="main-content">
-  <p> Cart details is going to be developed!</p>
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <table class="table table-bordered">
+        <tr *ngFor="let item of cartItem">
+          <td>
+            <img src="{{item.imgUri}}"  width="150px">
+          </td>
+          <td>
+            <p>{{item.name}}</p>
+            <p>{{item.unitPrice}}</p>
+          </td>
+          <td>
+            {{item.quantity}}
+          </td>
+
+        </tr>
+
+
+      </table>
+
+    </div>
+  </div>
 </div>
 
