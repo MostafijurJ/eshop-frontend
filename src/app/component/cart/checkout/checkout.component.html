@@ -154,8 +154,8 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="cardType">
-                  <option>Debit</option>
-                  <option>Credit</option>
+                  <option>VISA</option>
+                  <option>Master</option>
                 </select>
               </div>
             </div>
@@ -198,6 +198,14 @@
         </div>
         <!-- Card Info end-->
 
+        <!--Review your order-->
+        <div class="form-area">
+          <h3>Review your order</h3>
+          <p>Total Quantity: {{totalPrice}}</p>
+          <p>Shipping Free: FREE</p>
+          <p>Total Quantity: {{totalQuantity | currency: 'USD'}}</p>
+        </div>
+        
         <!-- purchase button-->
         <div class="text-center">
           <button type="submit" class="btn btn-info"> Purchase</button>
