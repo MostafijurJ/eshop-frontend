@@ -14,10 +14,12 @@ import {ProductDetailsComponent} from './component/product-details/product-detai
 import {NgModule} from '@angular/core';
 import { CartStatusComponent } from './component/cart/cart-status/cart-status.component';
 import { CartDetailsComponent } from './component/cart/cart-details/cart-details.component';
+import { CheckoutComponent } from './component/cart/checkout/checkout.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 //TODO define routes
 const routes: Routes = [
-
+  {path: 'checkout', component: CheckoutComponent},
   {path: 'product/:id', component: ProductDetailsComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
@@ -38,14 +40,16 @@ const routes: Routes = [
     SearchComponent,
     ProductDetailsComponent,
     CartStatusComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

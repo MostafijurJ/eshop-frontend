@@ -12,7 +12,7 @@ export class CartDetailsComponent implements OnInit {
  totalPrice: string = '';
  totalQuantity: number = 0;
 
-  constructor(private cartItemService : CartItemService) { }
+ constructor(private cartItemService : CartItemService) { }
 
   ngOnInit(): void {
     this.listCartItemDetails();
@@ -20,7 +20,7 @@ export class CartDetailsComponent implements OnInit {
 
   private listCartItemDetails() {
     this.cartItem = this.cartItemService.cartItems;
-    this.cartItemService.totalPrice.subscribe(price=>{
+    this.cartItemService.totalPrice.subscribe(price => {
       this.totalPrice = price.toFixed(2);
     })
     this.cartItemService.totalQuantity.subscribe(quantity =>{
