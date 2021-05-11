@@ -1,31 +1,64 @@
 <div class="main-content">
   <div class="section-content section-content-p30">
     <div class="container-fluid">
-      <table class="table table-bordered">
+      <div *ngIf="cartItem.length > 0">
+        <table class="table table-bordered">
+          <tr class="font-weight-bold">
+            <td width="20%">Product Image</td>
+            <td width="50%">Name</td>
+            <td width="30%"></td>
+          </tr>
+          <tr *ngFor="let item of cartItem">
+            <td>
+              <img src="{{item.imgUri}}" width="150px" alt="image is loading..">
+            </td>
+            <td>
+              <p class="font-weight-bold">{{item.name}}</p>
+              <p>{{item.unitPrice | currency: 'USD'}}</p>
+            </td>
+            <td>
+              <div class="items">
+                <label>Quantity</label>
+                <div class="row no-gutters">
+                  <div class="col">
+                    <button (click)="incrementQuantity(item)" class=" btn btn-primary btn-sm">
+                      <i class="fas fa-plus-circle"></i>
+                    </button>
+                  </div>
+                  <div class="col ml-4 mr-2 font-weight-bold">
+                    {{item.quantity}}
+                  </div>
+                  <div class="col">
+                    <button (click)="decrementQuantity(item)" class=" btn btn-primary btn-sm">
+                      <i class="fas fa-minus-circle"></i>
+                    </button>
+                  </div>
+                  <div class="col-8"></div>
+                </div>
+              </div>
 
-        <tr class="font-weight-bold">
-          <td width="20%">Product Image</td>
-          <td width="50%">Name</td>
-          <td width="30%">Quantity</td>
-        </tr>
+              <button (click)="removeItem(item)" class="btn btn-primary btn-sm mt-2">Remove</button>
 
-        <tr *ngFor="let item of cartItem">
-          <td>
-            <img src="{{item.imgUri}}" width="150px" alt="image is loading..">
-          </td>
-          <td>
-            <p class="font-weight-bold">{{item.name}}</p>
-            <p>{{item.unitPrice | currency: 'USD'}}</p>
-          </td>
-          <td>
-            <div class="items">
-              <label></label>  {{item.quantity}}
-            </div>
-          </td>
-        </tr>
+              <p class="mt-2 font-weight-bold"> Subtotal: {{item.unitPrice * item.quantity | currency: 'USD'}}</p>
+            </td>
+          </tr>
 
-      </table>
+          <!-- Start total quantity and price showing section-->
+          <tr>
+            <td colspan="2"></td>
+            <td style="font-weight: bold">
+              <p>Total Quantity: {{totalQuantity}}</p>
+              <p>Shipping Fee : 0.00 </p>
+              <p>Total Price: {{totalPrice | currency: 'USD'}}</p>
+            </td>
+          </tr>
+          <!-- END-->
+        </table>
+      </div>
+      <div *ngIf="cartItem.length==0" class=" alert alert-warning col-md-12" role="alert">
+        Your shopping cart is empty now!
 
+      </div>
     </div>
   </div>
 </div>

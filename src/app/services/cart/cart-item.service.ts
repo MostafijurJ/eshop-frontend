@@ -45,10 +45,10 @@ export class CartItemService {
 
   }
 
+  //TODO calculating total price
   computeTotals(){
     let totalPriceValue : number = 0;
     let totalQuantityValue : number = 0;
-
     for (let currentItem of this.cartItems){
       totalPriceValue += currentItem.quantity * currentItem.unitPrice;
       totalQuantityValue  += currentItem.quantity;
@@ -63,5 +63,25 @@ export class CartItemService {
 
   private static logCartedData(totalPriceValue: number, totalQuantityValue: number) {
     console.log(`total price ${totalPriceValue}  -- quantity ${totalQuantityValue}`)
+  }
+
+  decrementQuantity(item: CartItem) {
+    item.quantity--;
+
+    if (item.quantity==0){
+      this.removeItem(item);
+    }
+    else{
+      this.computeTotals();
+    }
+  }
+
+  public removeItem(item: CartItem) {
+    const itemIndex = this.cartItems.findIndex(tempItem => tempItem.id === item.id);
+
+    if (itemIndex > -1){
+      this.cartItems.splice(itemIndex,1);
+      this.computeTotals();
+    }
   }
 }

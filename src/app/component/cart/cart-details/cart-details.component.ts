@@ -23,13 +23,22 @@ export class CartDetailsComponent implements OnInit {
     this.cartItemService.totalPrice.subscribe(price=>{
       this.totalPrice = price.toFixed(2);
     })
-
     this.cartItemService.totalQuantity.subscribe(quantity =>{
       this.totalQuantity = quantity;
     })
 
-    console.log(`price = ${this.totalPrice} --- quantity = ${this.totalQuantity}`)
-
     this.cartItemService.computeTotals();
+  }
+
+  incrementQuantity(item: CartItem) {
+      this.cartItemService.addToCart(item);
+  }
+
+  decrementQuantity(item: CartItem) {
+    this.cartItemService.decrementQuantity(item);
+  }
+
+  removeItem(item: CartItem) {
+    this.cartItemService.removeItem(item);
   }
 }
