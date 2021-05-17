@@ -16,6 +16,7 @@ import { CartStatusComponent } from './component/cart/cart-status/cart-status.co
 import { CartDetailsComponent } from './component/cart/cart-details/cart-details.component';
 import { CheckoutComponent } from './component/cart/checkout/checkout.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { CountryComponent } from './component/country/country.component';
 
 //TODO define routes
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
     ProductDetailsComponent,
     CartStatusComponent,
     CartDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CountryComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

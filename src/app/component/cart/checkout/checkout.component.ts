@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Country} from '../../../domain/country/country';
+import {CountryService} from '../../../services/country/country.service';
 
 @Component({
   selector: 'app-checkout',
@@ -7,11 +9,12 @@ import {FormBuilder, FormGroup} from '@angular/forms';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+  countries: Country[] = [];
   checkoutFormGroup: FormGroup;
   totalPrice: string = '0.00';
   totalQuantity: number = 0;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private countryService: CountryService) {
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: [''],
@@ -41,6 +44,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllCounties();
+  }
+
+  getAllCounties(){
+    this.countryService.getAllCountries().subscribe(response =>{
+      this.countries = response;
+      console.log(this.countries);
+    })
   }
 
   onSubmit() {

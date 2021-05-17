@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../../services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {CartItemService} from '../../../services/cart/cart-item.service';
-import {CartItem} from '../../../classes/cart/cart-item';
-import {Products} from '../../../classes/products/products';
+import {CartItem} from '../../../domain/cart/cart-item';
+import {Products} from '../../../domain/products/products';
 
 @Component({
   selector: 'app-product-list',

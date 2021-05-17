@@ -135,9 +135,10 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="country">
-                  <option>Bangladesh</option>
-                  <option>INDIA</option>
-                  <option>JAPAN</option>
+                  <option *ngFor="let country of countries">
+                    {{country.name}}
+                  </option>
+
                 </select>
               </div>
             </div>
@@ -205,7 +206,7 @@
           <p>Shipping Free: FREE</p>
           <p>Total Quantity: {{totalQuantity | currency: 'USD'}}</p>
         </div>
-        
+
         <!-- purchase button-->
         <div class="text-center">
           <button type="submit" class="btn btn-info"> Purchase</button>
