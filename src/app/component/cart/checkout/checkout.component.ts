@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Country} from '../../../domain/country/country';
 import {CountryService} from '../../../services/country/country.service';
+import {CardTypeService} from '../../../services/checkoutDetails/card-type.service';
+import {CardType} from '../../../domain/checkoutDetails/card-type';
 
 @Component({
   selector: 'app-checkout',
@@ -10,11 +12,12 @@ import {CountryService} from '../../../services/country/country.service';
 })
 export class CheckoutComponent implements OnInit {
   countries: Country[] = [];
+  cardTypes: CardType[] = [];
   checkoutFormGroup: FormGroup;
   totalPrice: string = '0.00';
   totalQuantity: number = 0;
 
-  constructor(private formBuilder: FormBuilder, private countryService: CountryService) {
+  constructor(private formBuilder: FormBuilder, private countryService: CountryService, private cardTypeService: CardTypeService) {
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: [''],
@@ -45,13 +48,21 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllCounties();
+    this.getAllCardTypes();
   }
 
-  getAllCounties(){
-    this.countryService.getAllCountries().subscribe(response =>{
+  //TODO to retrieve all countries from backend
+  getAllCounties() {
+    this.countryService.getAllCountries().subscribe(response => {
       this.countries = response;
-      console.log(this.countries);
-    })
+    });
+  }
+
+  //TODO to retrieve all card Types from backend
+  getAllCardTypes() {
+    this.cardTypeService.getAllCardType().subscribe(response => {
+      this.cardTypes = response;
+    });
   }
 
   onSubmit() {

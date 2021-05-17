@@ -72,9 +72,9 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="country">
-                  <option>Bangladesh</option>
-                  <option>INDIA</option>
-                  <option>JAPAN</option>
+                  <option *ngFor="let country of countries">
+                    {{country.name}}
+                  </option>
                 </select>
               </div>
             </div>
@@ -155,8 +155,9 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="cardType">
-                  <option>VISA</option>
-                  <option>Master</option>
+                  <option *ngFor="let type of cardTypes">
+                    {{type.cardType}}
+                  </option>
                 </select>
               </div>
             </div>
