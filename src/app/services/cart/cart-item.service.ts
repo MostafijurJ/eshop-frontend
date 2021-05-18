@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CartItem} from '../../domain/cart/cart-item';
-import {Subject} from 'rxjs';
+import {ReplaySubject, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,8 @@ import {Subject} from 'rxjs';
 export class CartItemService {
 
   cartItems: CartItem[] = [];
-  totalPrice: Subject<number> = new Subject<number>();
-  totalQuantity: Subject<number> = new Subject<number>();
+  totalPrice: Subject<number> = new ReplaySubject<number>();
+  totalQuantity: Subject<number> = new ReplaySubject<number>();
 
   constructor() {
   }
@@ -57,12 +57,6 @@ export class CartItemService {
     //TODO publish the new value into cart
     this.totalPrice.next(totalPriceValue);
     this.totalQuantity.next(totalQuantityValue);
-
-    CartItemService.logCartedData(totalPriceValue, totalQuantityValue);
-  }
-
-  private static logCartedData(totalPriceValue: number, totalQuantityValue: number) {
-    console.log(`total price ${totalPriceValue}  -- quantity ${totalQuantityValue}`)
   }
 
   decrementQuantity(item: CartItem) {

@@ -63,7 +63,6 @@ export class ProductListComponent implements OnInit {
     }
 
     this.previousCategoryId = this.currentCategoryId;
-    console.log(`current cat id = ${this.previousCategoryId}`);
 
     /* return this.productService.getProductsByCategoryPaginate(this.page - 1,
                                                                        this.pageSize,
@@ -80,7 +79,6 @@ export class ProductListComponent implements OnInit {
 
 
   addToCart(productItem: Products) {
-    console.log(`name =  ${productItem.name} `);
     const cartItem = new CartItem(productItem);
     this.cartItemService.addToCart(cartItem);
 

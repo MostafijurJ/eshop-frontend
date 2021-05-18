@@ -31,7 +31,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart() {
-    const  cartItem = new CartItem(this.products);
+    const cartItem = new CartItem(this.products);
     this.cartItemService.addToCart(cartItem);
   }
 }

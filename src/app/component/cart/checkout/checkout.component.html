@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
 
-        <!--        customer form-->
+        <!-- customer form-->
         <div formGroupName="customer" class="form-area">
           <h3>Customer</h3>
 
@@ -12,6 +12,16 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="firstName" type="text">
+               <!-- <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger mt-1">
+                  <div *ngIf="firstName.errors.required">
+                    First Name is required
+                  </div>
+
+                  <div *ngIf="firstName.hasError('required')">
+                    First Name must be at least 2 characters long
+                  </div>
+
+                </div>-->
               </div>
             </div>
           </div>
@@ -112,16 +122,6 @@
               </div>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-md-2"><label>Address</label></div>
-            <div class="col-md-9">
-              <div class="input-space">
-                <input formControlName="address" type="text">
-              </div>
-            </div>
-          </div>
-
           <div class="row">
             <div class="col-md-2"><label>Zip Code</label></div>
             <div class="col-md-9">
@@ -203,9 +203,9 @@
         <!--Review your order-->
         <div class="form-area">
           <h3>Review your order</h3>
-          <p>Total Quantity: {{totalPrice}}</p>
+          <p>Total Price: {{totalPrice | currency: 'USD'}}</p>
           <p>Shipping Free: FREE</p>
-          <p>Total Quantity: {{totalQuantity | currency: 'USD'}}</p>
+          <p>Total Quantity: {{totalQuantity}}</p>
         </div>
 
         <!-- purchase button-->

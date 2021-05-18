@@ -4,6 +4,7 @@ import {Country} from '../../../domain/country/country';
 import {CountryService} from '../../../services/country/country.service';
 import {CardTypeService} from '../../../services/checkoutDetails/card-type.service';
 import {CardType} from '../../../domain/checkoutDetails/card-type';
+import {CartItemService} from '../../../services/cart/cart-item.service';
 
 @Component({
   selector: 'app-checkout',
@@ -13,16 +14,31 @@ import {CardType} from '../../../domain/checkoutDetails/card-type';
 export class CheckoutComponent implements OnInit {
   countries: Country[] = [];
   cardTypes: CardType[] = [];
-  checkoutFormGroup: FormGroup;
-  totalPrice: string = '0.00';
+  checkoutFormGroup!: FormGroup;
+  totalPrice: number = 0;
   totalQuantity: number = 0;
 
-  constructor(private formBuilder: FormBuilder, private countryService: CountryService, private cardTypeService: CardTypeService) {
+  constructor(private formBuilder: FormBuilder, private countryService: CountryService,
+              private cardTypeService: CardTypeService, private cartItemService: CartItemService) {
+
+  }
+
+  ngOnInit(): void {
+    this.getAllCounties();
+    this.getAllCardTypes();
+    this.updateCartStatus();
+
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
+        /* firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+         lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+         email: new FormControl('',
+           [Validators.required,
+             Validators.pattern('^[a-z0-9.%+-]+@[a-z0-9.-]+\\.[a-z]{2-4}$')]),*/
         firstName: [''],
         lastName: [''],
-        email: [''],
+        email: ['']
+
       }),
       shippingAddress: this.formBuilder.group({
         city: [''],
@@ -44,11 +60,7 @@ export class CheckoutComponent implements OnInit {
         expiryDate: [''],
       })
     });
-  }
 
-  ngOnInit(): void {
-    this.getAllCounties();
-    this.getAllCardTypes();
   }
 
   //TODO to retrieve all countries from backend
@@ -76,4 +88,26 @@ export class CheckoutComponent implements OnInit {
       this.checkoutFormGroup.controls.billingAddress.reset();
     }
   }
+
+  updateCartStatus() {
+    this.cartItemService.totalPrice.subscribe(response => {
+      this.totalPrice = response;
+    });
+    this.cartItemService.totalQuantity.subscribe(response => {
+      this.totalQuantity = response;
+    });
+  }
+
+  /* get firstName() {
+     return this.checkoutFormGroup.get('customer.firstName');
+   }
+
+   get lastName() {
+     return this.checkoutFormGroup.get('customer.lastName');
+   }
+
+   get email() {
+     return this.checkoutFormGroup.get('customer.email');
+   }*/
+
 }
