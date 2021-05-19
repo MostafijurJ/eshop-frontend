@@ -6,7 +6,7 @@ import {HeaderComponent} from './component/common/header/header.component';
 import {FooterComponent} from './component/common/footer/footer.component';
 import {ProductListComponent} from './component/products/product-list/product-list.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ProductService} from './services/product.service';
+import {ProductService} from './services/product/product.service';
 import {RouterModule, Routes} from '@angular/router';
 import {ProductCategoryComponent} from './component/product-category/product-category.component';
 import {SearchComponent} from './component/search/search.component';
