@@ -84,7 +84,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.checkoutFormGroup.get(`customer`)?.value);
+   // console.log(this.checkoutFormGroup.get(`customer`)?.value);
 
     //TODO setup Order
     let order = new Order();
@@ -104,11 +104,7 @@ export class CheckoutComponent implements OnInit {
     let purchase = new Purchase();
     purchase.customer = this.checkoutFormGroup.controls[`customer`].value;
     purchase.shippingAddress = this.checkoutFormGroup.controls[`shippingAddress`].value;
-    const country: Country = JSON.parse(JSON.stringify(purchase.shippingAddress.country));
-    purchase.shippingAddress.country = country.name;
     purchase.billingAddress = this.checkoutFormGroup.controls[`billingAddress`].value;
-    purchase.billingAddress.country = country.name;
-
     purchase.order = order;
     purchase.orderItems = orderItems;
 
