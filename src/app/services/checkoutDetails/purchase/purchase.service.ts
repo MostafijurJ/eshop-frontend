@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class PurchaseService {
 
-  private purchaseUri = '';
+  private purchaseUri = 'http://localhost:1112/purchase';
 
   constructor(private httpClient: HttpClient) {}
 
