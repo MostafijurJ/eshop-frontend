@@ -130,15 +130,15 @@ export class CheckoutComponent implements OnInit {
 
   //TODO reset the cart after ordering
   reSetCart(){
-    //reset cart data
+    //TODO reset cart data
     this.cartItemService.cartItems=[];
     this.cartItemService.totalQuantity.next(0);
     this.cartItemService.totalPrice.next(0);
 
-    //reset the form
+    //TODO reset the form
     this.checkoutFormGroup.reset();
 
-    //back to product page
+    //TODO back to product page
     this.router.navigateByUrl("/products");
   }
 
