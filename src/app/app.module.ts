@@ -17,10 +17,12 @@ import { CartDetailsComponent } from './component/cart/cart-details/cart-details
 import { CheckoutComponent } from './component/cart/checkout/checkout.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CountryComponent } from './component/country/country.component';
+import { CustomerComponent } from './component/common/customer/customer.component';
 
 //TODO define routes
 const routes: Routes = [
   {path: 'checkout', component: CheckoutComponent},
+  {path: 'customer', component: CustomerComponent},
   {path: 'product/:id', component: ProductDetailsComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
@@ -43,7 +45,8 @@ const routes: Routes = [
     CartStatusComponent,
     CartDetailsComponent,
     CheckoutComponent,
-    CountryComponent
+    CountryComponent,
+    CustomerComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

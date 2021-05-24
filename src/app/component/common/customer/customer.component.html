@@ -1,0 +1,25 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead class="table-hover table-dark text-center font-weight-bold">
+        <tr>
+          <th>SL</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        <tr *ngFor="let items of customers; index as i">
+          <td><span>{{i + 1}}</span></td>
+          <td><span>{{items.firstName}}</span></td>
+          <td><span>{{items.lastName}}</span></td>
+          <td><span>{{items.email}}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
