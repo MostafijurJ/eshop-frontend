@@ -1,7 +1,11 @@
 <div class="main-content">
   <div class="section-content section-content-p30">
+    <!--  Display a message is no products found-->
+     <div *ngIf="customers?.length==0" class="alert alert-warning col-md-12" role="alert">
+       No Customer Data Found!
+     </div>
     <div class="container">
-      <table class="table table-bordered table-striped">
+      <table *ngIf="customers?.length !=0" class="table table-bordered table-striped">
         <thead class="table-hover table-dark text-center font-weight-bold">
         <tr>
           <th>SL</th>
@@ -20,6 +24,5 @@
         </tbody>
       </table>
     </div>
-
   </div>
 </div>
