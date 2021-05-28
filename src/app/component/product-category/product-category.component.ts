@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ProductCategoryService} from '../../services/product-category/product-category.service';
 import {ProductCategory} from '../../domain/product-category/product-category';
 import {ActivatedRoute} from '@angular/router';
+import {Customer} from '../../domain/customer/customer';
+import {CustomerService} from '../../services/customers/customer.service';
+import {templateJitUrl} from '@angular/compiler';
 
 @Component({
   selector: 'app-product-category',
@@ -12,10 +15,13 @@ export class ProductCategoryComponent implements OnInit {
 
   public productCategories: ProductCategory[] = [];
 
-  constructor(private productCategoryService: ProductCategoryService, private route: ActivatedRoute) {}
+  public customers: Customer[] = [];
+
+  constructor(private productCategoryService: ProductCategoryService, private customerService: CustomerService) {}
 
   ngOnInit(): void {
     this.getProductCategories();
+    this.getAllCustomer();
   }
 
   getProductCategories(){
@@ -25,4 +31,11 @@ export class ProductCategoryComponent implements OnInit {
       }
     );
   }
+
+  getAllCustomer(){
+    this.customerService.getAllCustomer().subscribe(response =>{
+      this.customers = response;
+    })
+  }
+
 }
