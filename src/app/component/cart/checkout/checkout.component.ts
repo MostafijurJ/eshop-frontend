@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 import {Order} from '../../../domain/order/order';
 import {OrderItem} from '../../../domain/orderItem/order-item';
 import {Purchase} from '../../../domain/purchase/purchase';
+import {PaymentType} from '../../../domain/payment-type/payment-type';
 
 @Component({
   selector: 'app-checkout',
@@ -22,6 +23,9 @@ export class CheckoutComponent implements OnInit {
   checkoutFormGroup!: FormGroup;
   totalPrice: number = 0;
   totalQuantity: number = 0;
+
+  check_box_type = PaymentType;
+  currentlyChecked: PaymentType | undefined;
 
   constructor(private formBuilder: FormBuilder, private countryService: CountryService,
               private cardTypeService: CardTypeService, private cartItemService: CartItemService,
@@ -84,7 +88,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmit() {
-   // console.log(this.checkoutFormGroup.get(`customer`)?.value);
+    // console.log(this.checkoutFormGroup.get(`customer`)?.value);
 
     //TODO setup Order
     let order = new Order();
@@ -114,7 +118,7 @@ export class CheckoutComponent implements OnInit {
 
     this.purchaseService.placeOrder(purchase).subscribe(
       {
-        next: res =>{
+        next: res => {
           alert(`Your order has been received.\nOrder tracking number: ${res.orderTrackingNumber}`);
 
           //TODO reset the cart after ordering
@@ -124,14 +128,14 @@ export class CheckoutComponent implements OnInit {
           alert(`There was an error while ordering : ${err.message}`);
         }
       }
-    )
+    );
 
   }
 
   //TODO reset the cart after ordering
-  reSetCart(){
+  reSetCart() {
     //TODO reset cart data
-    this.cartItemService.cartItems=[];
+    this.cartItemService.cartItems = [];
     this.cartItemService.totalQuantity.next(0);
     this.cartItemService.totalPrice.next(0);
 
@@ -139,7 +143,7 @@ export class CheckoutComponent implements OnInit {
     this.checkoutFormGroup.reset();
 
     //TODO back to product page
-    this.router.navigateByUrl("/products");
+    this.router.navigateByUrl('/products');
   }
 
   copyShippingAddressToBillingAddress(event: any) {
@@ -158,6 +162,16 @@ export class CheckoutComponent implements OnInit {
       this.totalQuantity = response;
     });
   }
+
+  //TODO checking payment type checkbox
+  selectPaymentTypeCheckBox(targetType: PaymentType) {
+    if (this.currentlyChecked === targetType) {
+      this.currentlyChecked = PaymentType.NONE;
+      return;
+    }
+    this.currentlyChecked = targetType;
+  }
+
 
   /* get firstName() {
      return this.checkoutFormGroup.get('customer.firstName');
