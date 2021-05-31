@@ -12,16 +12,16 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="firstName" type="text">
-               <!-- <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger mt-1">
-                  <div *ngIf="firstName.errors.required">
-                    First Name is required
-                  </div>
+                <!-- <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger mt-1">
+                   <div *ngIf="firstName.errors.required">
+                     First Name is required
+                   </div>
 
-                  <div *ngIf="firstName.hasError('required')">
-                    First Name must be at least 2 characters long
-                  </div>
+                   <div *ngIf="firstName.hasError('required')">
+                     First Name must be at least 2 characters long
+                   </div>
 
-                </div>-->
+                 </div>-->
               </div>
             </div>
           </div>
@@ -98,7 +98,6 @@
             <input type="checkbox" (change)="copyShippingAddressToBillingAddress($event)">
             <span class="au-checkmark"></span> Billing address same as shipping address
           </label>
-
         </div>
 
         <!-- Billing  address-->
@@ -146,10 +145,29 @@
         </div>
         <!-- Billing address end-->
 
-        <!-- Card Info Start-->
-        <div formGroupName="cardInfo" class="form-area">
-          <h3>Card Information</h3>
+        <div class="row">
+          <div class="col-md-3"><label>Payment Type</label></div>
+          <div class="col-md-9">
+            <div class="input-space">
+              <div class="row">
+                <div class="col">
+                  <input type="checkbox" name="test" [checked]="currentlyChecked === check_box_type.CARD"
+                         (click)="selectPaymentTypeCheckBox(check_box_type.CARD)"> Card
+                </div>
+                <div class="col">
+                  <input type="checkbox" name="test" [checked]="currentlyChecked === check_box_type.CASH_ON_DELIVERY"
+                         (click)="selectPaymentTypeCheckBox(check_box_type.CASH_ON_DELIVERY)"> Cash On Delivery
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
 
+
+        <!-- Card Info Start-->
+        <div *ngIf="currentlyChecked ===check_box_type.CARD" formGroupName="cardInfo" class="form-area">
+          <h3>Card Information</h3>
           <div class="row">
             <div class="col-md-2"><label>Card Type</label></div>
             <div class="col-md-9">
@@ -204,7 +222,7 @@
         <div class="form-area">
           <h3>Review your order</h3>
           <p>Total Price: {{totalPrice | currency: 'USD'}}</p>
-          <p>Shipping Free: FREE</p>
+          <p>Shipping Free: TODO</p>
           <p>Total Quantity: {{totalQuantity}}</p>
         </div>
 

@@ -1,13 +1,13 @@
 <div class="menu-sidebar-content js-scrollbar1">
   <nav class="navbar-sidebar">
-    <ul class="list-unstyled navbar-list">
+    <ul class="list-unstyled product-list-font navbar-list">
       <li *ngFor="let tempCategory of productCategories">
         <a routerLink="/category/{{tempCategory.id}}" routerLinkActive="active-link">{{tempCategory.name}}</a>
       </li>
     </ul>
   </nav>
-  <nav class="navbar-sidebar">
-    <ul class="list-unstyled navbar-list">
+  <nav *ngIf="customers?.length !=0" class="navbar-sidebar">
+    <ul class="list-unstyled product-list-font navbar-list">
       <hr>
       <li>
         <a routerLink="/customer" routerLinkActive="active-link">Customers</a>

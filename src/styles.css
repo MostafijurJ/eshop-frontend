@@ -356,6 +356,7 @@ input.au-input.au-input-xl {
 
 .menu-sidebar-content {
   position: relative;
+  background-color: #bdc2ca;
   height: -webkit-calc(100vh - 75px);
   height: -moz-calc(100vh - 75px);
   height: calc(100vh - 75px)
@@ -364,6 +365,10 @@ input.au-input.au-input-xl {
 .navbar-sidebar {
   padding: 35px;
   padding-bottom: 0
+}
+
+.product-list-font {
+  color: white;
 }
 
 .navbar-sidebar .navbar-list li a {
