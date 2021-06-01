@@ -23,9 +23,10 @@ export class CheckoutComponent implements OnInit {
   checkoutFormGroup!: FormGroup;
   totalPrice: number = 0;
   totalQuantity: number = 0;
+  shippingFee: number = 50.00;
 
-  check_box_type = PaymentType;
-  currentlyChecked: PaymentType | undefined;
+  paymentTypeCheckBok = PaymentType;
+  paymentTypeCurrentlyChecked: PaymentType | undefined;
 
   constructor(private formBuilder: FormBuilder, private countryService: CountryService,
               private cardTypeService: CardTypeService, private cartItemService: CartItemService,
@@ -37,7 +38,6 @@ export class CheckoutComponent implements OnInit {
     this.getAllCounties();
     this.getAllCardTypes();
     this.updateCartStatus();
-
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         /* firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
@@ -89,7 +89,6 @@ export class CheckoutComponent implements OnInit {
 
   onSubmit() {
     // console.log(this.checkoutFormGroup.get(`customer`)?.value);
-
     //TODO setup Order
     let order = new Order();
     order.totalPrice = this.totalPrice;
@@ -112,7 +111,7 @@ export class CheckoutComponent implements OnInit {
     purchase.order = order;
     purchase.orderItems = orderItems;
 
-    console.log(purchase);
+    //console.log(purchase);
 
     //TODO rest call via purchase service
 
@@ -165,11 +164,19 @@ export class CheckoutComponent implements OnInit {
 
   //TODO checking payment type checkbox
   selectPaymentTypeCheckBox(targetType: PaymentType) {
-    if (this.currentlyChecked === targetType) {
-      this.currentlyChecked = PaymentType.NONE;
+    if (this.paymentTypeCurrentlyChecked === targetType) {
+      this.paymentTypeCurrentlyChecked = PaymentType.NONE;
       return;
     }
-    this.currentlyChecked = targetType;
+    this.paymentTypeCurrentlyChecked = targetType;
+  }
+
+
+  shippingFeeCalculation(){
+    const shippingCity = this.checkoutFormGroup.controls[`shippingAddress`].value;
+    if(shippingCity === "Dhaka" || shippingCity === "dhaka" ){
+      this.shippingFee = 30.00;
+    }
   }
 
 

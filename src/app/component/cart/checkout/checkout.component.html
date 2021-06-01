@@ -137,36 +137,37 @@
                   <option *ngFor="let country of countries">
                     {{country.name}}
                   </option>
-
                 </select>
               </div>
             </div>
           </div>
         </div>
+
         <!-- Billing address end-->
 
+        <!--Payment Type selection start-->
         <div class="row">
-          <div class="col-md-3"><label>Payment Type</label></div>
+          <div class="col-md-3 font-weight-bold"><label>Payment Type</label></div>
           <div class="col-md-9">
             <div class="input-space">
               <div class="row">
                 <div class="col">
-                  <input type="checkbox" name="test" [checked]="currentlyChecked === check_box_type.CARD"
-                         (click)="selectPaymentTypeCheckBox(check_box_type.CARD)"> Card
+                  <input type="checkbox" name="test" [checked]="paymentTypeCurrentlyChecked === paymentTypeCheckBok.CARD"
+                         (click)="selectPaymentTypeCheckBox(paymentTypeCheckBok.CARD)"> Card
                 </div>
                 <div class="col">
-                  <input type="checkbox" name="test" [checked]="currentlyChecked === check_box_type.CASH_ON_DELIVERY"
-                         (click)="selectPaymentTypeCheckBox(check_box_type.CASH_ON_DELIVERY)"> Cash On Delivery
+                  <input type="checkbox" name="test" [checked]="paymentTypeCurrentlyChecked === paymentTypeCheckBok.CASH_ON_DELIVERY"
+                         (click)="selectPaymentTypeCheckBox(paymentTypeCheckBok.CASH_ON_DELIVERY)"> Cash On Delivery
                 </div>
                 <hr>
               </div>
             </div>
           </div>
         </div>
-
+        <!--Payment Type selection start-->
 
         <!-- Card Info Start-->
-        <div *ngIf="currentlyChecked ===check_box_type.CARD" formGroupName="cardInfo" class="form-area">
+        <div *ngIf="paymentTypeCurrentlyChecked ===paymentTypeCheckBok.CARD" formGroupName="cardInfo" class="form-area">
           <h3>Card Information</h3>
           <div class="row">
             <div class="col-md-2"><label>Card Type</label></div>
@@ -222,7 +223,7 @@
         <div class="form-area">
           <h3>Review your order</h3>
           <p>Total Price: {{totalPrice | currency: 'USD'}}</p>
-          <p>Shipping Free: TODO</p>
+          <p>Shipping Free: {{shippingFee |  currency: 'USD'}}</p>
           <p>Total Quantity: {{totalQuantity}}</p>
         </div>
 
