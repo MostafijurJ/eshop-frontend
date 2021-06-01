@@ -12,16 +12,20 @@ import {ProductCategoryComponent} from './component/product-category/product-cat
 import {SearchComponent} from './component/search/search.component';
 import {ProductDetailsComponent} from './component/product-details/product-details.component';
 import {NgModule} from '@angular/core';
-import { CartStatusComponent } from './component/cart/cart-status/cart-status.component';
-import { CartDetailsComponent } from './component/cart/cart-details/cart-details.component';
-import { CheckoutComponent } from './component/cart/checkout/checkout.component';
+import {CartStatusComponent} from './component/cart/cart-status/cart-status.component';
+import {CartDetailsComponent} from './component/cart/cart-details/cart-details.component';
+import {CheckoutComponent} from './component/cart/checkout/checkout.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { CountryComponent } from './component/country/country.component';
-import { CustomerComponent } from './component/common/customer/customer.component';
+import {CountryComponent} from './component/country/country.component';
+import {CustomerComponent} from './component/common/customer/customer.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {LoginComponent} from './component/auth/login/login.component';
+import {RegistrationComponent} from './component/auth/registration/registration.component';
 
 //TODO define routes
 const routes: Routes = [
   {path: 'checkout', component: CheckoutComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'customer', component: CustomerComponent},
   {path: 'product/:id', component: ProductDetailsComponent},
   {path: 'cart-details', component: CartDetailsComponent},
@@ -46,7 +50,9 @@ const routes: Routes = [
     CartDetailsComponent,
     CheckoutComponent,
     CountryComponent,
-    CustomerComponent
+    CustomerComponent,
+    LoginComponent,
+    RegistrationComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -54,7 +60,8 @@ const routes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
