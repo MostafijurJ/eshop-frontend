@@ -15,7 +15,6 @@
               <input [(ngModel)]="credentials.username" #userNameField="ngModel" required type="text" name="username"
                      matInput>
               <div *ngIf="userNameField.touched && !userNameField.valid">username is required!</div>
-
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="outline">

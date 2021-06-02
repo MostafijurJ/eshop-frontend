@@ -9,34 +9,44 @@
           <h1> Registration Information!!</h1>
 
           <!--Registration form start-->
-          <form (ngSubmit)="onSubmit()">
+          <form #registrationForm = "ngForm" (ngSubmit)="onSubmit()">
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>First Name</mat-label>
-              <input [(ngModel)]="registration.firstName" required type="text" name="firstname" matInput>
+              <input [(ngModel)]="registration.firstName"  #firstNameField="ngModel"
+                     required type="text" name="firstname" matInput>
+              <div *ngIf="firstNameField.touched && !firstNameField.valid">firstname is required!</div>
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Last Name</mat-label>
-              <input [(ngModel)]="registration.lastName" required type="text" name="lastname" matInput>
+              <input [(ngModel)]="registration.lastName" #lastNameField="ngModel"
+                     required type="text" name="lastname" matInput>
+              <div *ngIf="lastNameField.touched && !lastNameField.valid">lastname is required!</div>
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Phone No.</mat-label>
-              <input [(ngModel)]="registration.phone" required type="number" name="phone" matInput>
+              <input [(ngModel)]="registration.phone" #phone="ngModel"
+                     required type="number" name="phone" matInput>
+              <div *ngIf="phone.touched && !phone.valid">phone is required!</div>
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Email</mat-label>
-              <input [(ngModel)]="registration.email" required type="email" name="email" matInput>
+              <input [(ngModel)]="registration.email" #email="ngModel"
+                     required type="email" name="email" matInput>
+              <div *ngIf="email.touched && !email.valid">email is required!</div>
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Password</mat-label>
-              <input [(ngModel)]="registration.password" required type="password" name="password" matInput>
+              <input [(ngModel)]="registration.password" #password="ngModel"
+                     required type="password" name="password" matInput>
+              <div *ngIf="password.touched && !password.valid">password is required!</div>
             </mat-form-field>
 
             <div class="container text-center">
-              <button mat-raised-button color="primary" type="submit" class="mt-2"> Submit</button>
+              <button [disabled]="!registrationForm.valid" mat-raised-button color="primary" type="submit" class="mt-2"> Submit</button>
               <button mat-raised-button color="white" type="reset"
                       class="mt-2" style="margin-left:10px"> Reset
               </button>

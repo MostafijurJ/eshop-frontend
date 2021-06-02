@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Credentials} from '../../../domain/user/credentials';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {LoginService} from '../../../services/auth/login.service';
+import {LoginService} from '../../../services/auth/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -31,6 +31,9 @@ export class LoginComponent implements OnInit {
     this.loginService.loginWithCredentials(this.credentials).subscribe({
       next:response =>{
         alert(`Your login is processing`+response);
+      },
+      error: err => {
+        alert(`There was an error while login : ${err.message}`);
       }
     })
   }
