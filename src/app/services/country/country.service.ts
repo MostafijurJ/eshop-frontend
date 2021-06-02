@@ -8,7 +8,7 @@ import {Country} from '../../domain/country/country';
 })
 export class CountryService {
 
-  public categoryUrl = 'http://localhost:1112/country';
+  private categoryUrl = 'http://localhost:1112/country';
 
   constructor(private httpClient: HttpClient) {
   }

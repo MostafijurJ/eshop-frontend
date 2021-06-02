@@ -1,10 +1,46 @@
 <div class="main-content">
   <div class="bootstrap-wrapper">
     <div class="container text-center">
-      <h1 class="text-center">Welcome</h1>
       <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="container text-center">
+            <img class="img-fluid" src="/assets/images/logo.png" style="width: 100px" alt="loading image">
+          </div>
+          <h3> Login here!!</h3>
+
+          <!--login form start-->
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Username</mat-label>
+              <input [(ngModel)]="credentials.username" #userNameField="ngModel" required type="text" name="username"
+                     matInput>
+              <div *ngIf="userNameField.touched && !userNameField.valid">username is required!</div>
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input [(ngModel)]="credentials.password" #passwordField="ngModel" required type="password"
+                     name="password" matInput>
+              <div *ngIf="passwordField.touched && !passwordField.valid">password is required!</div>
+              <!--<div *ngIf="getFormControl.password.errors" class="invalid-feedback">-->
+              <!--                <div *ngIf="getFormControl.password.errors.required">Password is required</div>-->
+              <!--              </div>-->
+            </mat-form-field>
+
+            <div class="container text-center">
+              <button [disabled]="!loginForm.valid" mat-raised-button color="primary" type="submit" class="mt-2">
+                Login
+              </button>
+              <button mat-raised-button color="white" type="reset"
+                      class="mt-2" style="margin-left:10px"> Reset
+              </button>
+            </div>
+          </form>
+          <!-- login form end-->
+
+        </div>
       </div>
-      <button mat-raised-button color="while"> Login</button>
     </div>
   </div>
 </div>

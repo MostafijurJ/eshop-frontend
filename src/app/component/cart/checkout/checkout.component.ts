@@ -20,7 +20,7 @@ import {PaymentType} from '../../../domain/payment-type/payment-type';
 export class CheckoutComponent implements OnInit {
   countries: Country[] = [];
   cardTypes: CardType[] = [];
-  checkoutFormGroup!: FormGroup;
+  checkoutFormGroup !: FormGroup;
   totalPrice: number = 0;
   totalQuantity: number = 0;
   shippingFee: number = 50.00;

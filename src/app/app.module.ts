@@ -15,17 +15,21 @@ import {NgModule} from '@angular/core';
 import {CartStatusComponent} from './component/cart/cart-status/cart-status.component';
 import {CartDetailsComponent} from './component/cart/cart-details/cart-details.component';
 import {CheckoutComponent} from './component/cart/checkout/checkout.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CountryComponent} from './component/country/country.component';
 import {CustomerComponent} from './component/common/customer/customer.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginComponent} from './component/auth/login/login.component';
 import {RegistrationComponent} from './component/auth/registration/registration.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 //TODO define routes
 const routes: Routes = [
   {path: 'checkout', component: CheckoutComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegistrationComponent},
   {path: 'customer', component: CustomerComponent},
   {path: 'product/:id', component: ProductDetailsComponent},
   {path: 'cart-details', component: CartDetailsComponent},
@@ -62,6 +66,10 @@ const routes: Routes = [
     NgbModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

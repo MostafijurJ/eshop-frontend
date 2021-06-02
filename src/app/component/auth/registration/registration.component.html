@@ -1,1 +1,53 @@
-<p>registration works!</p>
+<div class="main-content">
+  <div class="bootstrap-wrapper">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="container text-center">
+            <img class="img-fluid" src="/assets/images/logo.png" style="width: 100px" alt="loading image">
+          </div>
+          <h1> Registration Information!!</h1>
+
+          <!--Registration form start-->
+          <form (ngSubmit)="onSubmit()">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input [(ngModel)]="registration.firstName" required type="text" name="firstname" matInput>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input [(ngModel)]="registration.lastName" required type="text" name="lastname" matInput>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Phone No.</mat-label>
+              <input [(ngModel)]="registration.phone" required type="number" name="phone" matInput>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input [(ngModel)]="registration.email" required type="email" name="email" matInput>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input [(ngModel)]="registration.password" required type="password" name="password" matInput>
+            </mat-form-field>
+
+            <div class="container text-center">
+              <button mat-raised-button color="primary" type="submit" class="mt-2"> Submit</button>
+              <button mat-raised-button color="white" type="reset"
+                      class="mt-2" style="margin-left:10px"> Reset
+              </button>
+            </div>
+          </form>
+          <!-- Registration form end-->
+        </div>
+        <div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
