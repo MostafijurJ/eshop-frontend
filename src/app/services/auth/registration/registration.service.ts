@@ -9,7 +9,7 @@ import {Registration} from '../../../domain/user/registration';
 })
 export class RegistrationService {
 
-  private registrationUrl = 'http://localhost:1112/register';
+  private registrationUrl = 'http://localhost:1112/user/register';
 
   constructor(private httpClient: HttpClient) {}
 
