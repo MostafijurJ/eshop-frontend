@@ -2,10 +2,11 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Products} from '../../domain/products/products';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class ProductService {
-  public baseUrl = 'http://localhost:1112/products';
+  public baseUrl = environment.baseUrl + 'products';
 
   constructor(private httpClient: HttpClient) {
   }
